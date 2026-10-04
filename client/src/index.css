@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-ink-900 font-sans text-sm text-fg antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-semibold text-fg;
+  }
+  a {
+    @apply text-accent hover:underline;
+  }
+  ::selection {
+    background: #2f86c4;
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid #4aa3df;
+    outline-offset: 1px;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #273748 transparent;
+  }
+  select,
+  input,
+  textarea {
+    color-scheme: dark;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded border px-3.5 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-45;
+  }
+  .btn-sm {
+    @apply px-2.5 py-1 text-xs;
+  }
+  .btn-primary {
+    @apply border-accent-strong bg-accent-strong text-white hover:bg-accent hover:border-accent;
+  }
+  .btn-secondary {
+    @apply border-ink-500 bg-ink-700 text-fg hover:bg-ink-600;
+  }
+  .btn-danger {
+    @apply border-crit bg-crit text-white hover:bg-red-500;
+  }
+  .btn-ghost {
+    @apply border-transparent bg-transparent text-muted hover:bg-ink-700 hover:text-fg;
+  }
+  .btn-ok {
+    @apply border-ok bg-ok text-ink-950 hover:brightness-110;
+  }
+  .input {
+    @apply w-full rounded border border-ink-500 bg-ink-900 px-3 py-2 text-sm text-fg placeholder:text-faint focus:border-accent focus:outline-none;
+  }
+  select.input option {
+    background-color: #111820;
+    color: #d6dde6;
+  }
+  .label {
+    @apply mb-1 block text-2xs font-medium uppercase tracking-wider text-muted;
+  }
+  .panel {
+    @apply rounded border border-line bg-ink-800;
+  }
+  .panel-title {
+    @apply text-2xs font-semibold uppercase tracking-wider text-muted;
+  }
+  .tbl {
+    @apply w-full border-collapse text-left text-sm;
+  }
+  .tbl th {
+    @apply whitespace-nowrap border-b border-line bg-ink-800 px-3 py-2 text-2xs font-semibold uppercase tracking-wider text-muted;
+  }
+  .tbl td {
+    @apply border-b border-line px-3 py-2 align-middle;
+  }
+  .tbl tbody tr:hover td {
+    @apply bg-ink-700/60;
+  }
+  .tbl td.font-mono {
+    @apply whitespace-nowrap;
+  }
+  .tag {
+    @apply inline-flex items-center rounded-sm border px-1.5 py-0.5 text-2xs font-medium uppercase tracking-wide;
+  }
+}
+
+/* Gentle ring on active emergency markers. */
+@keyframes marker-pulse {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.2);
+  }
+}
+.marker-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: marker-pulse 2.2s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marker-pulse {
+    animation: none;
+  }
+}

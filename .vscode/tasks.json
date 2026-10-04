@@ -1,0 +1,29 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "RapidResQ server",
+			"type": "shell",
+			"command": "npm start",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "RapidResQ build",
+			"type": "shell",
+			"command": "npm run build",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Chennai tile",
+			"type": "shell",
+			"command": "curl -sS -o /dev/null -w '%{http_code}\\n' --fail https://a.basemaps.cartocdn.com/rastertiles/voyager/12/2961/1897.png",
+			"windows": {
+				"command": "powershell -NoProfile -Command \"try { (Invoke-WebRequest -UseBasicParsing 'https://a.basemaps.cartocdn.com/rastertiles/voyager/12/2961/1897.png').StatusCode } catch { Write-Output $_.Exception.Message; exit 1 }\""
+			},
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}

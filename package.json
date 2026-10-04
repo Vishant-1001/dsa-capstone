@@ -1,0 +1,22 @@
+{
+  "name": "rapidresq",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RapidResQ: ambulance dispatch and emergency route optimization simulation (Data Structures course project)",
+  "scripts": {
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "seed": "node database/seed.js",
+    "seed:reset": "node database/seed.js --reset",
+    "dev": "concurrently -n server,client -c blue,green \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix client",
+    "start": "npm run start --prefix server",
+    "test": "npm test --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  },
+  "engines": {
+    "node": ">=14.17.0"
+  },
+  "license": "MIT"
+}
