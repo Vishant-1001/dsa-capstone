@@ -11,6 +11,8 @@ const CLIENT_DIST = path.join(__dirname, '..', 'client', 'dist');
 function createApp() {
   const app = express();
   app.disable('x-powered-by');
+  // Behind a hosting proxy (Render), use the client address it forwards so the login limit is per user.
+  if (process.env.TRUST_PROXY) app.set('trust proxy', Number(process.env.TRUST_PROXY) || process.env.TRUST_PROXY);
   app.use(
     helmet({
       // Map tiles come from another origin, which the default embedder policy would block.

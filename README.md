@@ -51,7 +51,11 @@ Other scripts:
 | `npm run seed`       | Seeds the database if it is empty                           |
 | `npm run seed:reset` | Wipes city and mission data and reseeds (accounts are kept) |
 
-Environment variables (all optional): `PORT` (default 4000), `JWT_SECRET` (otherwise a random secret is generated once and stored in the database), `RAPIDRESQ_DB` (database path), `CORS_ORIGIN` (only needed if the UI is served from another origin).
+### Deploy to Render
+
+`render.yaml` describes a free Render web service that builds the client and serves the UI and the API from one Node 18 process. In Render choose **New, Blueprint**, pick this repository and apply. The deployed site is not a real dispatch system: the demo accounts below work on it, and the free plan's disk is temporary, so the database is reseeded (and any changed passwords are lost) whenever the service restarts or redeploys. Free services also sleep after about 15 minutes idle and take up to a minute to wake.
+
+Environment variables (all optional): `PORT` (default 4000), `JWT_SECRET` (otherwise a random secret is generated once and stored in the database), `RAPIDRESQ_DB` (database path), `CORS_ORIGIN` (only needed if the UI is served from another origin), `TRUST_PROXY` (set to `1` behind a single reverse proxy such as Render, so the sign-in rate limit applies per visitor).
 
 ## Demo accounts
 

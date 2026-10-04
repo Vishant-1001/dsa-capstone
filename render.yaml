@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: rapidresq
+    runtime: node
+    plan: free
+    buildCommand: npm run install:all && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      # better-sqlite3 7.6.2 builds on Node 14 to 18 only.
+      - key: NODE_VERSION
+        value: 18.20.8
+      - key: TRUST_PROXY
+        value: 1
+      - key: JWT_SECRET
+        generateValue: true
